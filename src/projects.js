@@ -1,9 +1,11 @@
+import { format } from "date-fns";
+
 export class Project {
     constructor(title, dueDate, why,  weekOfYear, dateOfWeek, weeksToGoInTheYear, goalsOfWeek, weekDay, dailyTasksOfGoals) {
         this.title = title;
-        this.dueDate = dueDate;
+        this.dueDate = format(new Date(dueDate), "dd/MM/yyyy");
         this.why = why;
-        this.weekOfYear = weekOfYear;
+        this.weekOfYear = weekOfYear; //current week in the year
         this.dateOfWeek = dateOfWeek;
         this.weeksToGoInTheYear = weeksToGoInTheYear;
         this.goalsOfWeek = goalsOfWeek;

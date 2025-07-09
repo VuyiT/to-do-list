@@ -1,20 +1,23 @@
-import { format, startOfWeek, endOfWeek } from "date-fns";
+import { formatISO, differenceInBusinessDays } from "date-fns";
 
 export class Project {
     constructor(title, dueDate, why, goalsOfWeek, weekDay, dailyTasksOfGoals) {
         this.title = title;
-        this.dueDate = format(new Date(dueDate), "dd/MM/yyyy");
+        this.dueDate = formatISO(new Date(dueDate), { representation: "date"});
         this.why = why;
+        this.daysToDueDate = differenceInBusinessDays(
+            this.dueDate,
+            new Date()
+        );
         this.goalsOfWeek = goalsOfWeek;
         this.weekDay = weekDay;
         this.dailyTasksOfGoals = dailyTasksOfGoals;
     }
-
     get project() {
         return `${this.title}
         Due: ${this.dueDate}
         The Why: ${this.why}
-        Current Week of Year: Week ${this.weekOfYear} (${this.startOfWeek} - ${this.endOfWeek}) (${this.weeksToGoInTheYear} weeks left before goal expires)
+        Countdown: ${this.daysToDueDate} days left before due-date
         Goals of Week: ${this.goalsOfWeek}
         ${this.weekDay}:
         ${this.dailyTasksOfGoals}`;

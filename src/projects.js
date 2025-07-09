@@ -1,4 +1,4 @@
-class Project {
+export class Project {
     constructor(title, dueDate, why,  weekOfYear, dateOfWeek, weeksToGoInTheYear, goalsOfWeek, weekDay, dailyTasksOfGoals) {
         this.title = title;
         this.dueDate = dueDate;
@@ -15,7 +15,7 @@ class Project {
         return `${this.title}
         Due: ${this.dueDate}
         The Why: ${this.why}
-        Current Week of Year: ${this.weekOfYear} - ${this.dateOfWeek} (${this.weeksToGoInTheYear} of weeks to go)
+        Current Week of Year: Week ${this.weekOfYear} - ${this.dateOfWeek} (${this.weeksToGoInTheYear} weeks left before goal expires)
         Goals of Week: ${this.goalsOfWeek}
         ${this.weekDay}:
         ${this.dailyTasksOfGoals}`;

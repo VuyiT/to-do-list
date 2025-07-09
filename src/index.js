@@ -1,10 +1,13 @@
 import "./style.css";
 import { CreateTask } from "./home";
+import { Project } from "./projects";
 
 // CreateTask
 const taskOne = new CreateTask("Go to Gym", "I like to gym it gives me energy!");
 console.log(taskOne);
 console.log(taskOne.task);
-CreateTask.task = "Meet me baby: I like baby"; //here I am sort of replicating the static properties. They act on the class itself, whereas everything else acts on the insatnce of the class
 taskOne.task = "Meet me baby: I like baby";
 console.log(taskOne.task)
+
+const project = new Project("Travel to India", "19 October 2025", "I want to see where they make tea and bring back some Assams", "25", "June 12-17", "25", "Get 10% closer to the goal of going to India", "Monday", "Find out the price of a plane ticket to India");
+console.log(project.project);

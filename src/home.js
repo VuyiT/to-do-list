@@ -1,5 +1,5 @@
  export class CreateTask {
-    constructor(title, description) {
+    constructor(title, description, goal, dueDate, priority) {
         this.title = title;
         this.description = description;
     }

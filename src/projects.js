@@ -1,4 +1,4 @@
-class Projects {
+class CreateProjects {
     constructor(title, dueDate, why,  weekOfYear, dateOfWeek, weeksToGoInTheYear, goalsOfWeek, weekDay, dailyTasksOfGoals) {
         this.title = title;
         this.dueDate = dueDate;

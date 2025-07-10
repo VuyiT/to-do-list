@@ -9,5 +9,5 @@ console.log(taskOne.task);
 taskOne.task = "Meet me baby: I like baby";
 console.log(taskOne.task)
 
-const project = new Project("Travel to India", "19 October 2025", "I want to see where they make tea and bring back some Assams", "25", "June 12-17", "25", "Get 10% closer to the goal of going to India", "Monday", "Find out the price of a plane ticket to India");
+const project = new Project("Travel to India", "19 October 2025", "I want to see where they make tea and bring back some Assams", "Find out the price of a plane ticket to India");
 console.log(project.project);

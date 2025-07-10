@@ -16,7 +16,7 @@ class ProgressTracker {
 }
 
 export class Project {
-    constructor(title, dueDate, why, goalsOfWeek, weekDay, dailyTasksOfGoals) {
+    constructor(title, dueDate, why, projectTasks) {
         this.title = title;
         this.dueDate = formatISO(new Date(dueDate), { representation: "date"});
         this.why = why;
@@ -24,9 +24,7 @@ export class Project {
             this.dueDate,
             new Date()
         );
-        this.goalsOfWeek = goalsOfWeek;
-        this.weekDay = weekDay;
-        this.dailyTasksOfGoals = dailyTasksOfGoals;
+        this.projectTasks = projectTasks;
     }
 
     get project() {

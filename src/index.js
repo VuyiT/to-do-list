@@ -3,7 +3,7 @@ import { Task } from "./tasks";
 import { Project } from "./projects";
 
 // CreateTask
-const taskOne = new Task("Go to Gym", "I like to gym it gives me energy!");
+const taskOne = new Task("Go to Gym", "15 July 2025", "I like to gym it gives me energy!");
 console.log(taskOne);
 console.log(taskOne.task);
 taskOne.task = "Meet me baby: I like baby";

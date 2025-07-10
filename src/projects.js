@@ -1,5 +1,6 @@
 import { formatISO, differenceInBusinessDays } from "date-fns";
-import { ProgressTracker } from "./progress_tracker"
+import { ProgressTracker } from "./progress_tracker";
+import { Task } from "./tasks";
 
 export class Project {
     constructor(title, dueDate, why, projectTasks) {

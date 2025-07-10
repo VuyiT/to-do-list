@@ -34,7 +34,7 @@ export class Project {
         Due: ${this.dueDate}
         The Why: ${this.why}
         Countdown: ${this.daysToDueDate} days left before due-date
-        Progress: ${ProgressTracker.trackProgress} complete
+        Progress: ${ProgressTracker.trackProgress}% complete
         Goals of Week: ${this.goalsOfWeek}
         ${this.weekDay}:
         ${this.dailyTasksOfGoals}`;

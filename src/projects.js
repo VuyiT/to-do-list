@@ -1,29 +1,12 @@
 import { formatISO, differenceInBusinessDays } from "date-fns";
-
-class ProgressTracker {
-    constructor(totalNumberOfTasks) {
-        this.totalNumberOfTasks = totalNumberOfTasks;
-        this.finishedTasks = 0;
-    }
-
-    trackProgress() {
-        const remainingTasks = ((this.totalNumberOfTasks - this.finishedTasks) / this.totalNumberOfTasks) * 100;
-
-        const completed = 100 - remainingTasks;
-
-        return completed;
-    }
-}
+import { ProgressTracker } from "./progress_tracker"
 
 export class Project {
     constructor(title, dueDate, why, projectTasks) {
         this.title = title;
         this.dueDate = formatISO(new Date(dueDate), { representation: "date"});
         this.why = why;
-        this.daysToDueDate = differenceInBusinessDays(
-            this.dueDate,
-            new Date()
-        );
+        this.daysToDueDate = differenceInBusinessDays(this.dueDate,new Date());
         this.projectTasks = projectTasks;
     }
 

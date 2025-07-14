@@ -17,6 +17,10 @@ export class Project {
         this.projectTasks = projectTasks;
     }
 
+    listProjectTasks() {
+        return this.projectTasks.join(`\n`);
+    }
+
     get project() {
         return `${this.title}
         Due: ${this.dueDate}
@@ -24,6 +28,6 @@ export class Project {
         Countdown: ${this.daysToDueDate} days left before due-date
         Progress: ${ProgressTracker.trackProgress}% complete
         Project Tasks: 
-        ${this.projectTasks}`;
+        ${this.listProjectTasks()}`;
     }
 }

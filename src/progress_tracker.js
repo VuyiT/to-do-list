@@ -1,5 +1,12 @@
+import { Project } from "./projects";
+
 export class ProgressTracker {
-    constructor(totalNumberOfTasks) {
+    constructor(project, totalNumberOfTasks) {
+        if (project instanceof Project) {
+            const projectTasks = project.projectTasks;
+            totalNumberOfTasks = projectTasks.length;
+            return totalNumberOfTasks; 
+        }
         this.totalNumberOfTasks = totalNumberOfTasks;
         this.finishedTasks = 0;
     }

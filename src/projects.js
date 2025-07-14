@@ -8,6 +8,12 @@ export class Project {
         this.dueDate = formatISO(new Date(dueDate), { representation: "date"});
         this.why = why;
         this.daysToDueDate = differenceInBusinessDays(this.dueDate,new Date());
+
+        projectTasks = [];
+        if (projectTasks instanceof Task) {
+            const newTask = new Task();
+            return newTask.title;
+        }
         this.projectTasks = projectTasks;
     }
 

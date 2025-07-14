@@ -1,10 +1,17 @@
 import { formatISO } from "date-fns";
+import { Project } from "./projects";
 
 export class Task {
-    constructor(title, dueDate, description, priority) {
+    constructor(title, dueDate, project, description, priority) {
         this.title = title;
         this.dueDate = formatISO(new Date(dueDate), { representation: "date"});
         this.description = description;
+        
+        if (project instanceof Project) {
+            project = project.projectTasks;
+            return project.push(this.title);
+        }
+        this.project = project;
     }
 
     get task() {
@@ -16,3 +23,4 @@ export class Task {
         return;
     }
 }
+

@@ -1,5 +1,4 @@
 import { formatISO, differenceInBusinessDays } from "date-fns";
-import { ProgressTracker } from "./progress_tracker";
 import { Task } from "./tasks";
 
 export class Project {
@@ -21,12 +20,24 @@ export class Project {
         return this.projectTasks.join(`\n`);
     }
 
+    showProjectProgress() {
+        const numberOfTasks = this.projectTasks;
+        const totalNumberOfTasks = numberOfTasks.length;
+        let finishedTasks = 0;
+
+        const remainingTasks = ((totalNumberOfTasks - finishedTasks) / totalNumberOfTasks) * 100;
+
+        const completedTasks = 100 - remainingTasks;
+
+        return completedTasks;
+    }
+
     get project() {
         return `${this.title}
         Due: ${this.dueDate}
         The Why: ${this.why}
         Countdown: ${this.daysToDueDate} days left before due-date
-        Progress: ${ProgressTracker.trackProgress}% complete
+        Progress: ${this.showProjectProgress()}% complete
         Project Tasks: 
         ${this.listProjectTasks()}`;
     }

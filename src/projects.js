@@ -21,8 +21,8 @@ export class Project {
     }
 
     showProjectProgress() {
-        const numberOfTasks = this.projectTasks;
-        const totalNumberOfTasks = numberOfTasks.length;
+        const taskList = this.projectTasks;
+        const totalNumberOfTasks = taskList.length;
         let finishedTasks = 0;
 
         const remainingTasks = ((totalNumberOfTasks - finishedTasks) / totalNumberOfTasks) * 100;

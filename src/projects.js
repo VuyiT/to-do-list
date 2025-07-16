@@ -14,22 +14,27 @@ export class Project {
             return newTask.title;
         }
         this.projectTasks = projectTasks;
+        this.finishedTasks = [];
     }
 
     listProjectTasks() {
         return this.projectTasks.join(`\n`);
     }
 
-    showProjectProgress() {
+    trackProjectProgress() {
         const taskList = this.projectTasks;
         const totalNumberOfTasks = taskList.length;
-        let finishedTasks = 0;
+        const numberOfFinishedTasks = this.finishedTasks.length;
 
-        const remainingTasks = ((totalNumberOfTasks - finishedTasks) / totalNumberOfTasks) * 100;
+        if (totalNumberOfTasks === 0) {
+            return 0;
+        }
+
+        const remainingTasks = ((totalNumberOfTasks - numberOfFinishedTasks) / totalNumberOfTasks) * 100;
 
         const completedTasks = 100 - remainingTasks;
 
-        return completedTasks;
+        return completedTasks.toFixed(0);
     }
 
     get project() {
@@ -37,7 +42,7 @@ export class Project {
         Due: ${this.dueDate}
         The Why: ${this.why}
         Countdown: ${this.daysToDueDate} days left before due-date
-        Progress: ${this.showProjectProgress()}% complete
+        Progress: ${this.trackProjectProgress()}% complete
         Project Tasks: 
         ${this.listProjectTasks()}`;
     }

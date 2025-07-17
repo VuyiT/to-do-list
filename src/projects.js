@@ -2,23 +2,27 @@ import { formatISO, differenceInBusinessDays } from "date-fns";
 import { Task } from "./tasks";
 
 export class Project {
-    constructor(title, dueDate, why, projectTasks) {
+    constructor(title, dueDate, why) {
         this.title = title;
         this.dueDate = formatISO(new Date(dueDate), { representation: "date"});
         this.why = why;
         this.daysToDueDate = differenceInBusinessDays(this.dueDate,new Date());
 
-        projectTasks = [];
-        if (projectTasks instanceof Task) {
-            const newTask = new Task();
-            return newTask.title;
-        }
-        this.projectTasks = projectTasks;
+        this.projectTasks = [];
         this.finishedTasks = [];
     }
 
+    addTask(title, dueDate = null, description, priority) {
+        const newTask = new Task(title, dueDate, description, this.title, priority);
+        return this.projectTasks.push(newTask);
+    }
+
     listProjectTasks() {
-        return this.projectTasks.join(`\n`);
+        return this.projectTasks.map(task => {
+            const taskName = task.title;
+            const taskDueDate = task.dueDate ? `(Due: ${task.dueDate})` : ""; 
+            return ` - ${taskName}: ${taskDueDate}`;
+        }).join(`\n`);
     }
 
     trackProjectProgress() {

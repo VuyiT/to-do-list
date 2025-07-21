@@ -25,7 +25,7 @@ export class Task {
     getProjectTitle() {
         return this.projectTitle;
     }
-    
+
     markTaskAsFinished(taskTitle) {
         const taskIndex = this.projectTasks.findIndex(task => task.title = taskTitle);
 
@@ -42,7 +42,13 @@ export class Task {
     }
 
     get task() {
-        return `${this.title}: ${this.description}`;
+        return `
+        Title: ${this.title}
+        Due-date: ${this.dueDate}
+        Priority: ${this.priority}
+        Parent Project: ${this.getProjectTitle()}
+        Description: ${this.description}
+        `;
     }
 
     set task(value) {

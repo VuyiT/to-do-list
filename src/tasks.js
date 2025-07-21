@@ -4,7 +4,19 @@ import { Project } from "./projects";
 export class Task {
     constructor(title, dueDate, project, description, priority) {
         this.title = title;
-        this.dueDate = formatISO(new Date(dueDate), { representation: "date"});
+
+        if (dueDate) {
+            const dateObj = new Date(dueDate);
+            if (!isNaN(dateObj.getTime())) {
+                this.dueDate = formatISO(dateObj, { representation: "date" });
+            } else {
+                console.log(`Task recieved an invalid due-date value: "${dueDate}". Setting due-date to null.`);
+                this.dueDate = null;
+            }
+        } else {
+            this.dueDate = null;
+        }
+        
         this.description = description;
         
         if (project instanceof Project) {

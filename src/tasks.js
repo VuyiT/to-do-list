@@ -3,6 +3,7 @@ import { Project } from "./projects";
 
 export class Task {
     constructor(title, dueDate, project, description, priority) {
+        this.id = crypto.randomUUID();
         this.title = title;
 
         if (dueDate) {

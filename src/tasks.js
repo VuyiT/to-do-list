@@ -19,6 +19,7 @@ export class Task {
         }
         this.projectTitle = projectTitle;
         this.description = description;
+        this.priority = priority;
         this.completeStatus = false;
     }
 

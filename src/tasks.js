@@ -22,6 +22,10 @@ export class Task {
         this.completeStatus = false;
     }
 
+    getProjectTitle() {
+        return this.projectTitle;
+    }
+    
     markTaskAsFinished(taskTitle) {
         const taskIndex = this.projectTasks.findIndex(task => task.title = taskTitle);
 

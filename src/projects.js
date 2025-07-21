@@ -14,7 +14,7 @@ export class Project {
     }
 
     addTask(title, dueDate = null, description, priority) {
-        const newTask = new Task(title, dueDate, description, this.title, priority);
+        const newTask = new Task(title, dueDate, this.title, description, priority);
         return this.projectTasks.push(newTask);
     }
 

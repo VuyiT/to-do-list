@@ -18,6 +18,18 @@ export class Project {
         return this.projectTasks.push(newTask);
     }
 
+    listOneProjectTask(taskId) {
+        const taskIndex = this.projectTasks.findIndex(task => task.id === taskId);
+
+        if (taskIndex !== -1) {
+            const taskToShow = this.projectTasks[taskIndex];
+            console.log(`Full picture of Task ${taskToShow.title}`)
+            return taskToShow.task;
+        }
+        console.log(`Could not find task with ID ${taskId}`);
+        return false;
+    }
+
     listAllProjectTasks() {
         return this.projectTasks.map(task => {
             const taskName = task.title;

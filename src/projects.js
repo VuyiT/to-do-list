@@ -3,6 +3,7 @@ import { Task } from "./tasks";
 
 export class Project {
     constructor(title, dueDate, why) {
+        this.id = crypto.randomUUID();
         this.title = title;
         this.dueDate = formatISO(new Date(dueDate), { representation: "date"});
         this.why = why;
@@ -23,6 +24,16 @@ export class Project {
             const taskDueDate = task.dueDate ? `(Due: ${task.dueDate})` : ""; 
             return ` - ${taskName}: ${taskDueDate}`;
         }).join(`\n`);
+    }
+
+    listOneTask() {
+        const taskIndex = this.projectTasks.findIndex(task => task.title = taskTitle);
+
+        if (taskIndex) {
+            return taskIndex.task();
+        } else {
+            return false;
+        }
     }
 
     trackProjectProgress() {

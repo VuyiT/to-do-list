@@ -18,22 +18,12 @@ export class Project {
         return this.projectTasks.push(newTask);
     }
 
-    listProjectTasks() {
+    listAllProjectTasks() {
         return this.projectTasks.map(task => {
             const taskName = task.title;
             const taskDueDate = task.dueDate ? `(Due: ${task.dueDate})` : ""; 
             return ` - ${taskName}: ${taskDueDate}`;
         }).join(`\n`);
-    }
-
-    listOneTask() {
-        const taskIndex = this.projectTasks.findIndex(task => task.title = taskTitle);
-
-        if (taskIndex) {
-            return taskIndex.task();
-        } else {
-            return false;
-        }
     }
 
     trackProjectProgress() {
@@ -59,6 +49,6 @@ export class Project {
         Countdown: ${this.daysToDueDate} days left before due-date
         Progress: ${this.trackProjectProgress()}% complete
         Project Tasks: 
-        ${this.listProjectTasks()}`;
+        ${this.listAllProjectTasks()}`;
     }
 }

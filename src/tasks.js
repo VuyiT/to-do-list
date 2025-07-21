@@ -2,7 +2,7 @@ import { formatISO } from "date-fns";
 import { Project } from "./projects";
 
 export class Task {
-    constructor(title, dueDate, project, description, priority) {
+    constructor(title, dueDate, projectTitle, description, priority) {
         this.id = crypto.randomUUID();
         this.title = title;
 
@@ -17,14 +17,8 @@ export class Task {
         } else {
             this.dueDate = null;
         }
-        
+        this.projectTitle = projectTitle;
         this.description = description;
-        
-        if (project instanceof Project) {
-            project = project.projectTasks;
-            return project.push(this.title);
-        }
-        this.project = project;
         this.completeStatus = false;
     }
 

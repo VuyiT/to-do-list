@@ -35,7 +35,7 @@ export class Task {
             this.finishedTasks.push(taskToMove);
 
             console.log(`You Finished ${taskToMove.title}`);
-            return true
+            return true;
         }
         console.log((`Could Not Find Task With Title ${taskToMove.title}`));
         return false;

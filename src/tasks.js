@@ -1,5 +1,4 @@
 import { formatISO } from "date-fns";
-import { Project } from "./projects";
 
 export class Task {
     constructor(title, dueDate, projectTitle, description, priority) {

@@ -38,6 +38,51 @@ export class Project {
         }).join(`\n`);
     }
 
+    updateProjectTask(taskId, updates = {}) {
+        const taskToUpdate = this.projectTasks.find((task => task.id === taskId));
+
+        if (taskToUpdate) {
+            if (updates.title !== undefined) {
+                taskToUpdate.title = updates.title;
+            }
+            if (updates.dueDate !== undefined) {
+                const dateObj = new Date(updates.dueDate);
+                if (!isNaN(dateObj.getTime())) {
+                    taskToUpdate.dueDate = formatISO(dateObj, { representation: "date" });
+            } else {
+                console.warn(`Attempted to update Task ID ${taskId} with invalid dueDate: "${updates.dueDate}". Due date not uodated.`);
+                this.dueDate = null;
+                }
+            }
+            if (updates.description !== undefined) {
+                taskToUpdate.description = updates.description;
+            }
+            if (updates.priority !== undefined) {
+                taskToUpdate.priority = updates.priority;
+            }
+            if (updates.completeStatus !== undefined) {
+                taskToUpdate.completeStatus = updates.completeStatus;
+            }
+            console.log(`Task ID ${taskId} updated successfully.`); 
+            return true;
+        } else {
+            console.warn(`Task with ID ${taskId} not found.`);
+            return false;
+        } 
+    }
+
+    deleteProjectTask(taskId) {
+        const taskIndex = this.projectTasks.findIndex(task => task.id === taskId);
+
+        if (taskIndex !== -1) {
+            const taskToDelete = this.projectTasks[taskIndex];
+            console.log(`You deleted a Task Called ${taskToDelete.title}. ${this.title} has only ${this.projectTasks.length} tasks left now.`);
+            return this.projectTasks.splice(taskToDelete, 1); 
+        }
+        console.log(`Could not find task with ID ${taskId}`);
+        return false;
+    }
+
     trackProjectProgress() {
         const taskList = this.projectTasks;
         const totalNumberOfTasks = taskList.length;

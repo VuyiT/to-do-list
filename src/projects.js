@@ -5,7 +5,17 @@ export class Project {
     constructor(title, dueDate, why) {
         this.id = crypto.randomUUID();
         this.title = title;
-        this.dueDate = formatISO(new Date(dueDate), { representation: "date"});
+        if (dueDate) {
+            const dateObj = new Date(dueDate);
+            if (!isNaN(dateObj.getTime())) {
+                this.dueDate = formatISO(dateObj, { representation: "date" });
+                } else {
+                    console.log(`Task recieved an invalid due-date value: "${dueDate}". Setting due-date to null.`);
+                    this.dueDate = null;
+                    }
+                } else {
+                    this.dueDate = null;
+                }
         this.why = why;
         this.daysToDueDate = differenceInBusinessDays(this.dueDate,new Date());
 
